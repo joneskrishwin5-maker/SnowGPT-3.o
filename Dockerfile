@@ -14,8 +14,10 @@ RUN arduino-cli core install arduino:avr
 # Set the working directory for the website
 WORKDIR /app
 
-# Copy package files and install website dependencies safely
-COPY package*.json ./
+# Copy package configuration files first to leverage Docker caching
+COPY package.json package-lock.json* ./
+
+# Install dependencies safely with legacy peer flags
 RUN npm install --legacy-peer-deps
 
 # Copy the rest of your website code
