@@ -232,7 +232,6 @@ export default function ChatPage() {
       // ROUTE TO ARDUINO FLOW
       if (modeToFlash === 'arduino') {
         setArduinoFirmware(firmwareBuffer);
-        // We pause here. The UI will render the "Select Arduino & Flash" button
         return; 
       }
 
@@ -269,14 +268,13 @@ export default function ChatPage() {
             lastProgress = progress;
           }
         }
-      });
+      } as any); // <-- Fixed with type assertion to satisfy strict TS check
 
       setFlashLogs((prev) => prev + "\n[SUCCESS] Flashing complete! Board is restarting.\n👉 Close this window and click 'Serial Monitor' to see your code working!\n");
 
     } catch (err: any) {
       setFlashLogs((prev) => prev + `\nCritical Error: ${err.message}\n`);
     } finally {
-      // Ensure ESP32 unlocks the port
       if (modeToFlash === 'esp32') {
         if (transport) {
           try { await transport.disconnect(); } catch (e) {}
@@ -579,7 +577,6 @@ export default function ChatPage() {
                 {isFlashing ? "Flashing in progress..." : "Flasher Output"}
               </h2>
               
-              {/* If Arduino compilation is done, show the final trigger button */}
               {arduinoFirmware && (
                 <button 
                   onClick={executeArduinoFlash}
