@@ -53,13 +53,13 @@ If the user asks you to write hardware code, you MUST write code specifically fo
     }
 
     const result = await generateText({
-      model: groq('openai/gpt-oss-120b'), // Fixed: removed the invalid second argument object
+      model: groq('openai/gpt-oss-120b'),
       system: systemPrompt,
       messages,
       tools: {
         web_search: tool({
           description: 'Search the web for current events, news, or facts.',
-          parameters: z.object({ query: z.string() }),
+          inputSchema: z.object({ query: z.string() }), // Updated from parameters to inputSchema
           execute: async ({ query }) => {
             try {
               const searchResults = await search(query, { safeSearch: SafeSearchType.STRICT });
