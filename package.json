@@ -1,0 +1,34 @@
+{
+  "name": "snowgpt-3",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "@ai-sdk/google": "^3.0.100",
+    "@ai-sdk/groq": "^3.0.53",
+    "@ai-sdk/openai": "^4.0.20",
+    "@ai-sdk/react": "^3.0.172",
+    "ai": "^7.0.37",
+    "duck-duck-scrape": "^2.2.7",
+    "esptool-js": "^0.6.1",
+    "highlight.js": "^11.11.1",
+    "next": "^16.2.4",
+    "openai": "^7.15.0",
+    "pdf-parse": "^2.4.5",
+    "react": "^19.2.5",
+    "react-dom": "^19.2.5",
+    "react-markdown": "^10.1.0",
+    "rehype-highlight": "^7.0.2",
+    "remark-gfm": "^4.0.1",
+    "serialport": "^13.0.0",
+    "unstructured-client": "^0.31.0",
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "@types/node": "25.6.0",
+    "typescript": "6.0.3"
+  }
+}
