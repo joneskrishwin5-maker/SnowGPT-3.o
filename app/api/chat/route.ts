@@ -1,5 +1,5 @@
 import { groq } from '@ai-sdk/groq';
-import { generateText, tool, stepCountIs } from 'ai';
+import { generateText, tool } from 'ai';
 import { z } from 'zod';
 import { search, SafeSearchType } from 'duck-duck-scrape';
 
@@ -71,7 +71,6 @@ If the user asks you to write hardware code, you MUST write code specifically fo
           },
         }),
       },
-      stopWhen: stepCountIs(5), // Updated to match the current SDK requirement
     });
 
     return Response.json({ text: result.text || "Empty response from model." });
