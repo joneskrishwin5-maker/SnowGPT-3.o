@@ -14,9 +14,9 @@ RUN arduino-cli core install arduino:avr
 # Set the working directory for the website
 WORKDIR /app
 
-# Copy package files and install website dependencies
+# Copy package files and install website dependencies safely
 COPY package*.json ./
-RUN npm install
+RUN npm install --legacy-peer-deps
 
 # Copy the rest of your website code
 COPY . .
@@ -27,5 +27,5 @@ RUN npm run build
 # Expose the port Next.js runs on
 EXPOSE 3000
 
-# Start the application
+# Start the Next.js production server
 CMD ["npm", "start"]
