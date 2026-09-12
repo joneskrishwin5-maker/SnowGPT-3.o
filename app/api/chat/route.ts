@@ -53,7 +53,7 @@ If the user asks you to write hardware code, you MUST write code specifically fo
     }
 
     const result = await generateText({
-      model: groq('openai/gpt-oss-120b', { apiKey: process.env.GROQ_API_KEY || '' }),
+     model: groq('openai/gpt-oss-120b'),
       system: systemPrompt,
       messages,
       tools: {
