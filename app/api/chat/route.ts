@@ -1,5 +1,5 @@
 import { groq } from '@ai-sdk/groq';
-import { generateText, tool } from 'ai';
+import { generateText, tool, stepCountIs } from 'ai';
 import { z } from 'zod';
 import { search, SafeSearchType } from 'duck-duck-scrape';
 
@@ -59,7 +59,7 @@ If the user asks you to write hardware code, you MUST write code specifically fo
       tools: {
         web_search: tool({
           description: 'Search the web for current events, news, or facts.',
-          inputSchema: z.object({ query: z.string() }), // Updated from parameters to inputSchema
+          inputSchema: z.object({ query: z.string() }),
           execute: async ({ query }) => {
             try {
               const searchResults = await search(query, { safeSearch: SafeSearchType.STRICT });
@@ -71,7 +71,7 @@ If the user asks you to write hardware code, you MUST write code specifically fo
           },
         }),
       },
-      maxSteps: 5,
+      stopWhen: stepCountIs(5), // Updated to match the current SDK requirement
     });
 
     return Response.json({ text: result.text || "Empty response from model." });
