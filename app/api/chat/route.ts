@@ -53,7 +53,7 @@ If the user asks you to write hardware code, you MUST write code specifically fo
     }
 
     const result = await generateText({
-     model: groq('openai/gpt-oss-120b'),
+      model: groq('openai/gpt-oss-120b'), // Fixed: removed the invalid second argument object
       system: systemPrompt,
       messages,
       tools: {
