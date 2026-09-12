@@ -1,5 +1,5 @@
 # Use an official Node.js runtime as a parent image
-FROM node:20-bullseye
+FROM node:22-bullseye
 
 # Install Arduino CLI securely into the system bin
 RUN curl -fsSL https://raw.githubusercontent.com/arduino/arduino-cli/master/install.sh | BINDIR=/usr/local/bin sh
